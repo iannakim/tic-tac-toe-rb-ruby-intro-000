@@ -109,11 +109,15 @@ def over?(board)
 end
 
 def play(board)
-  turns_played = 0
-  until turns_played == 9
-    turn(board)
-    turns_played += 1
-  end
+   until over?(board) 
+      turn(board)
+   end 
+   if won?(board)
+      winner(board) == "X" || winner(board) == "O" 
+      puts "Congratulations #{winner(board)}!" 
+   elsif draw?(board)
+      puts "Cats Game!" 
+   end 
 end
 
 def winner(board)
